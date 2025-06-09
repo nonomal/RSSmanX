@@ -1,5 +1,5 @@
-# update time 2024-11-16
-# version 4.3
+# update time 2025-06-09
+# version 4.5
 
 x-local-time-zone:
 #  - &use-local-time-zone /etc/timezone:/etc/timezone:ro
@@ -189,7 +189,7 @@ services:
       REDIS_URL: redis://service.redis:6379/
       PUPPETEER_WS_ENDPOINT: ws://service.browserless:3000
       # use proxy
-      PROXY_URI: socks5://clash:8085
+      PROXY_URI: http://clash:8080
       REQUEST_RETRY: 5
 #       PROXY_STRATEGY: on_retry  # 作用：需要指定服务器先尝试直连再使用代理。不建议服务器在大陆地区的用户开启
     expose:
@@ -272,7 +272,6 @@ services:
     restart: unless-stopped
 
   service.clash:
-#    image: dreamacro/clash:v1.18.0 # lock the version as the original author has abandoned the repo
     image: metacubex/mihomo 
     container_name: clash
     networks:
